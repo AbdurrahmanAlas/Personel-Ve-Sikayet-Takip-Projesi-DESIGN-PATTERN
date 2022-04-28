@@ -1,0 +1,49 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<br />
+<br />
+
+<h2 style="margin-left:420px;color:blue">✦ Yapılan İşlem Adımı Ekleme</h2>
+<br />
+
+<h3 class="text-center btn btn-success" style="max-width:30%;margin-left:430px;">@ViewBag.m </h3>
+@using (Html.BeginForm("AddContent", "WriterPanelContent", FormMethod.Post))
+{
+<div class="form-group " style="margin-left:350px;color:black">
+
+    <input type="hidden" name="HeadingID" value="@ViewBag.d" />
+    <input type="hidden" name="HeadingName" value="@ViewBag.v" />
+
+
+    @Html.Label(" Firmaya/Hafriyatçıya yapılan işlemi giriniz:")
+    @Html.TextAreaFor(x => x.ContentValue, 4, 20, new { @class = "form-control", style = "max-width:60%" })
+    @Html.ValidationMessageFor(x => x.ContentValue)
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:60%" })
+    <br />
+    
+    @*@Html.Label(" Şikayet Mahalle")
+        @Html.TextBoxFor(x => x.ContentMahalle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentMahalle)
+        <br />
+        @Html.Label(" Ada ")
+        @Html.TextBoxFor(x => x.ContentAdaNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentAdaNo)
+        <br />
+        @Html.Label(" Parsel no")
+        @Html.TextBoxFor(x => x.ContentParselNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentParselNo)
+        <br />*@
+
+
+
+    <button class="btn btn-info">+ Yapılan işlem Ekle</button>
+</div>
+
+
+
+}

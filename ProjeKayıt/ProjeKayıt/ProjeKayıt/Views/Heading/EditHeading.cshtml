@@ -1,0 +1,114 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "EditHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<br />
+<h3 style="margin-left:350px; color:blue ">Kontrol edilen Firma Güncelleme Sayfası </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <table class="table table-bordered border" style="border:double">
+
+        <thead>
+
+            <tr>
+                <th style="margin-left:300px;font-size:17px;background-color:moccasin;color:black">Firma Bilgileri</th>
+                <th style="margin-left:300px;font-size:17px;background-color:moccasin;color:black">Adres Bilgileri</th>
+
+
+
+
+            </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </thead>
+        <tbody>
+            <tr>
+                @using (Html.BeginForm("EditHeading", "Heading", FormMethod.Post))
+                {
+
+                    <div class="form-group" style="margin-left:350px; color:black">
+
+                        <td style="color:blue">
+                            @Html.Label("Başlık Id")
+                            @Html.TextBoxFor(x => x.HeadingID, new { @class = "form-control", style = "max-width:60%" })
+
+                            <br />
+
+                            @Html.Label("Başlık Adı")
+                            @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control", style = "max-width:60%" })
+
+                            <br />
+                            @Html.Label("İlgili Memur")
+                            @Html.TextBoxFor(x => x.WriterID, new { @class = "form-control", style = "max-width:60%" })
+                            <br />
+                            @Html.Label("Tarih")
+                            @Html.TextBoxFor(x => x.HeadingDate, new { @class = "form-control", style = "max-width:60%" })
+
+                            <br />
+                            @Html.Label("Kategori")
+                            @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:60%" })
+
+                            <br />
+
+
+                        </td>        <br />
+                                     <td  style="color:blue">
+                                         @Html.Label("Adres/Acıklama")
+                                         @Html.TextBoxFor(x => x.HeadingAdres, new { @class = "form-control", style = "max-width:60%" })
+                                         <br />
+
+
+
+                                         @Html.Label("Adres/Acıklama")
+                                         @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control", style = "max-width:60%" })
+
+                                         <br />
+                                         @Html.Label("Ada")
+                                         @Html.TextBoxFor(x => x.HeadingAda, new { @class = "form-control", style = "max-width:60%" })
+
+                                         <br />
+                                         @Html.Label("Parsel")
+                                         @Html.TextBoxFor(x => x.HeadingParsel, new { @class = "form-control", style = "max-width:60%" })
+                                      <br />   <button class="btn btn-success">Güncelle</button>
+
+                                     </td>
+
+                            <br />
+
+
+                           
+
+</div>
+
+
+                }
+
+            </tr>
+        </tbody>
+    </table>

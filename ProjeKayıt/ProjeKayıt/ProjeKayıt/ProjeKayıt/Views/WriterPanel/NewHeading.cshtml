@@ -1,0 +1,47 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "NewHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+<br />
+<h2>Yeni Şikayet Ekleme</h2>
+<br />
+@using (Html.BeginForm("NewHeading", "WriterPanel", FormMethod.Post))
+{
+<div class="form-group">
+
+
+    @Html.Label(" Şikayet edilen firma")
+    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingName)
+    <br />
+    @Html.Label(" Mahalle/Yapılan İşlem ")
+    @Html.TextBoxFor(x => x.HeadingAdres, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingAdres)
+    <br />
+    @Html.Label(" Ada no")
+    @Html.TextBoxFor(x => x.HeadingAda, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingAda)
+    <br />  @Html.Label(" Parsel No")
+    @Html.TextBoxFor(x => x.HeadingParsel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingParsel)
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    <br />
+
+
+    <br />
+
+
+    <button class="btn btn-info">Şikayet Ekle</button>
+</div>
+
+
+
+}
+
+

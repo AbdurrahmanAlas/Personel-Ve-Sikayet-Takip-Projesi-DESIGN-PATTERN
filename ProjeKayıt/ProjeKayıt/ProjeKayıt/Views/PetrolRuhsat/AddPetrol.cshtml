@@ -1,0 +1,97 @@
+﻿@model EntityLayer.Concrete.PetrolRuhsat
+@{
+    ViewBag.Title = "AddPetrol";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h2 style="margin-left:450px;color:blue"><b>+ Yeni Petrol istasyonu Kontrolü ekleme</b></h2>
+<br />
+
+<table class="table table-bordered border" style="border:double">
+
+    <thead>
+
+        <tr>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Firma Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Adres Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Yapılan işlem</th>
+
+
+
+
+        </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </thead>
+    <tbody>
+        <tr style="color:black">
+            @using (Html.BeginForm("AddPetrol", "PetrolRuhsat", FormMethod.Post))
+            {
+                <div class="form-group" style="margin-left:250px" >
+
+
+                    <td>
+                        @Html.Label("Petrol istasyonu Adı")
+                        @Html.TextBoxFor(x=>x.PetrolName, new { @class = "form-control", style = "max-width:50%" })
+                        @Html.ValidationMessageFor(x => x.PetrolName)
+                        <br />
+
+                        @Html.Label("Memur Ad ")
+                        @Html.TextBoxFor(x => x.Writer.WriterName, new { @class = "form-control", style = "max-width:50%" })
+                        @Html.ValidationMessageFor(x => x.Writer.WriterName)
+                        <br />
+                        @Html.Label("Tarih")
+                        @Html.TextBoxFor(x => x.PetrolDate, new { @class = "form-control", style = "max-width:50%" })
+                        @Html.ValidationMessageFor(x => x.PetrolDate)
+                        <br />
+                        @Html.Label("Kategori")
+                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:50%" })
+                        <br />
+
+                    </td>     <br />
+                    <td>
+                        @Html.Label("   Adres Konum")
+                        @Html.TextBoxFor(x => x.PetrolAdres, new { @class = "form-control", style = "max-width:90%" })
+                        @Html.ValidationMessageFor(x => x.PetrolAdres)
+                        <br />
+                        @Html.Label("Mahalle/Ada/Parsel")
+                        @Html.TextBoxFor(x => x.PetrolAda, new { @class = "form-control", style = "max-width:90%" })
+                        @Html.ValidationMessageFor(x => x.PetrolAda)
+
+                        <br />  @Html.Label("Ruhsat Numarası")
+                        @Html.TextBoxFor(x => x.PetrolParsel, new { @class = "form-control", style = "max-width:50%" })
+                        @Html.ValidationMessageFor(x => x.PetrolParsel)
+                        <br />
+                    </td>
+
+                    <td>
+                        @Html.Label("Yapılan işlem /Sonuç")
+                        @Html.TextAreaFor(x => x.PetrolTelefon, new { @class = "form-control", style = "max-width:80%" })
+                        <br />
+                        <button class="btn btn-info">+ Petrol istasyonu iş adımı Ekle</button>
+                    </td>
+
+                </div>
+
+
+
+            }
+
+
+        </tr>
+    </tbody>
+</table>

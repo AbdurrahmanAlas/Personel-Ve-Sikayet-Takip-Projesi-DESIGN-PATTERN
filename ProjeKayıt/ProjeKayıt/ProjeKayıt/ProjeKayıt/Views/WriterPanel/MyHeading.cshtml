@@ -1,0 +1,188 @@
+﻿@using EntityLayer.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "MyHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+@{
+    string color = "";
+
+
+}
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="card-title" style="color:blue;margin-left:200px;"><b>Sisteme Girdiğim İşlerim</b></h1>
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title" style="color:blue;margin-left:300px;">
+                    @using (Html.BeginForm())
+                    {
+                        <h6 class="fas fa-search-location ">
+                            Firma/Adres/Ada/Ara:@Html.TextBox("p")
+
+                            <input class="btn btn-warning " type="submit" value="🔎 Ara" placeholder="Adres/Firma Ara" />
+                        </h6>
+
+                    }
+                </h2>.               <a href="/WriterPanel/MyHeading/" class="btn btn-secondary ">↺ Sisteme Girdiğim İşlerim </a>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+
+                            <th style="width: 8%" class="text-center">
+                                Adres
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Ada
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Parsel
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+
+
+
+
+                            if (item.Category.CategoryName == "Kazı izni olmayanlar")
+                            {
+                                color = "badge btn-warning";
+
+                            }
+                            if (item.Category.CategoryName == "Hafriyatcı")
+                            {
+                                color = "badge btn-dark";
+
+
+                            }
+
+                            if (item.Category.CategoryName == "Sonuçlandı.")
+                            {
+                                color = "badge btn-success";
+
+
+                            }
+
+                            if (item.Category.CategoryName == "İnşaat firması")
+                            {
+                                color = "badge btn-secondary";
+
+
+                            }
+
+                            <tr>
+                                <td>
+                                    #
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            @item.Writer.WriterName
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>@item.HeadingAdres</td>
+                                <td>@item.HeadingAda</td>
+                                <td>@item.HeadingParsel</td>
+
+
+                                <td class="project-state">
+                                    <span class="@color">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="~/Content/ContentByHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        İşlemler
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/WriterPanel/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="badge btn-success btn-sm" style="font-size:15px;" href="/WriterPanelContent/AddContent/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Açıklama yaz
+                                    </a>
+
+                                    <a class="btn btn-danger btn-sm" href="/WriterPanel/DeleteHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+
+
+
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+
+<a href="/WriterPanel/NewHeading/" class="btn btn-primary">✚ Yeni Kontrol Girişi</a>
+<a href="/WriterPanel/MyHeading/" class="btn btn-secondary ">➔ Sisteme Girdiğim İşlerim </a>
+

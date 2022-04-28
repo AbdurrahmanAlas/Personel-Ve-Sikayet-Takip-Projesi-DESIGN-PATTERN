@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "EditCeza";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+@model EntityLayer.Concrete.Punishment
+
+
+<h2 class="text-center" style="color:darkblue">Ceza Güncelleme sayfası </h2>
+
+@using (Html.BeginForm("EditCeza", "Ceza", FormMethod.Post))
+{
+<div class="form-group  " style="margin-left:400px; color:blue">
+    @*@Html.HiddenFor(x => x.WriterID, new { @class = "form-control", style = "max-width:50%" })*@
+    @Html.HiddenFor(x => x.CezaId, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+    @Html.Label("Ceza yazılan firma adı")
+    @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+
+
+
+    @Html.Label("   Adres /Konum")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control", style = "max-width:50%" })
+
+    <br />
+    @Html.Label("Döküman Adı")
+    @Html.TextBoxFor(x => x.DocumentName, new { @class = "form-control", style = "max-width:50%" })
+
+
+    <br />
+    @Html.Label("Ceza Miktarı")
+    @Html.TextBoxFor(x => x.CezaAmont, new { @class = "form-control", style = "max-width:50%" })
+
+
+    <br />
+
+
+
+    @Html.Label("Ceza yazan ekip")
+    @Html.TextBoxFor(x => x.CezaTeam, new { @class = "form-control", style = "max-width:50%" })
+    <br />  @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.CezaDate, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+
+    @Html.Label("Sonuç")
+    @Html.TextBoxFor(x => x.CezaPhoto, new { @class = "form-control", style = "max-width:50%" })
+
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+}
+
+
+

@@ -1,0 +1,72 @@
+﻿
+@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "MyContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <br />
+                <h3 style="color:blue;margin-left:250px;"><b>Firma Hakkında yapılan Bütün işlemler</b></h3>
+                <br />
+                <!-- Timelime example  -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- The time line -->
+                        <div class="timeline">
+                            @foreach (var item in Model)
+                            {<!-- timeline time label -->
+                                <div class="time-label">
+
+
+
+
+                                    <span class="btn-success">@(((DateTime)item.ContentDate).ToString("dd-MMM-yyyy"))</span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <div style="color:black">
+                                    <i class="fas fa-comment bg-yellow"></i>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header"><a href="#">@item.Heading.HeadingName --@item.Writer.WriterName</a> @item.Writer.WriterSurName</h3>
+                                        <div class="timeline-body">
+                                            @item.ContentValue
+
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <h3 class="timeline-header"></h3>
+                                        @*<div class="timeline-body">
+                                            @item.Category.CategoryName
+                                        </div>*@
+                                    </div>
+                                    <br />
+                                </div>
+                                <!-- END timeline item -->
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </div>
+            <!-- /.timeline -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+</body>
+</html>
+
+@*  *@
+

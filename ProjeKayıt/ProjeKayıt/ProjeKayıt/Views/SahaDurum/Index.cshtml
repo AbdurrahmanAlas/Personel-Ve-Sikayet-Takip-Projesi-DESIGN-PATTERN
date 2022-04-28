@@ -1,0 +1,92 @@
+﻿@using EntityLayer.Concrete
+@model List<SahaDurum>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini ">
+    <!-- /.navbar -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h3 style="color:black;margin-left:400px;"><b>❖ ŞÜPHELİ ALAN BİLGİLERİ </b></h3>
+                    <br />
+                    <a href="/SahaDurum/AddSaha" class="btn btn-primary"> + Şüpheli Döküm Ekle</a>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card card-solid">
+            <div class="card-body pb-0">
+                <div class="row d-flex align-items-stretch">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                            <div class="card card-solid card-outline btn btn-outline-light" style="border:solid;border-color:#287e9a">
+                                <div class="card-header text-muted border-bottom-0">
+                                    <b style="color:darkred;font-size:19px;"> @item.SahaName<h6 class="lead badge btn-dark" style="margin-left:210px;color:white"><b>  @(((DateTime)item.SahaDate).ToString("dd-MMM-yyyy"))</b></h6></b>
+                                </div>
+                                <div class="card-body pt-0">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4 class="lead" style="color:black"><b>@item.Writer.WriterName  @item.Writer.WriterSurName</b></h4>
+                                            <p style=" border:solid;border-color:#f2eabb;background-color:#fff3aa" class="text-muted text-sm">
+                                                <b style="color:black">KONUM :</b> <a href="@item.SahaAdres" style="font-size:14px; border:outset" class="badge btn-info">➤ Konuma Git</a><br /> <b style="color:black">MAHALLE:</b> @item.SahaAda <b style="color:black">
+                                                    <br />
+                                                    ADA/PARSEL :
+                                                </b> @item.SahaParsel
+                                            </p>
+                                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                <li style="color:blue"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Döküm Nedeni: @item.Category.CategoryName</li>
+                                                <br />
+                                                <li><span class="fa-li"></span><b style="color:black">✎Yapılan İşlem:</b><b style="color:red"> @item.SahaTelefon </b></li>
+
+                                            </ul>
+                                        </div>
+                                        @*<div class="col-5 text-center">
+
+                                <img src="@item." alt="" class="img-circle img-fluid" />
+                            </div>*@
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="text-right">
+                                        <a href="/WriterPanel/MyHeading/@item.WriterID" class="btn btn-sm bg-secondary">
+                                            <i class="fas fa-comments" style="color:white">DenetimRaporları</i>
+                                        </a>
+                                        <a href="/SahaDurum/EditSaha/@item.SahaId" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-user"></i> Şüpheli DökümGüncelle
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <br />
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- /.card -->
+    </section>
+    <br />
+    <!-- /.content -->
+</body>
+</html>
+

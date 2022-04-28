@@ -1,0 +1,51 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "AddHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h2>Yeni Şikayet Ekleme</h2>
+<br />
+@using (Html.BeginForm("AddHeading", "Heading", FormMethod.Post))
+{
+<div class="form-group">
+
+
+    @Html.Label(" Firma Adı")
+    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingName)
+    <br />
+    @Html.Label(" Telefon")
+    @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control" })
+   
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("İlgili Memur")
+    @Html.DropDownListFor(x => x.WriterID, (List<SelectListItem>)ViewBag.vlr, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.WriterID)
+    <br />
+    @*@Html.Label("Mahalle")
+        @Html.TextBoxFor(x => x.HeadingAdres, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingAdres)
+        <br />@Html.Label("Ada")
+        @Html.TextBoxFor(x => x.HeadingAda, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingAda)
+        <br />
+        @Html.Label("Parsel")
+        @Html.TextBoxFor(x => x.HeadingParsel, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingParsel)
+        <br />
+        @Html.Label("Tarih")
+        @Html.TextBoxFor(x => x.HeadingDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.HeadingDate)
+        <br />*@
+
+    <button class="btn btn-info">Şikayet Ekle</button>
+</div>
+
+
+
+}

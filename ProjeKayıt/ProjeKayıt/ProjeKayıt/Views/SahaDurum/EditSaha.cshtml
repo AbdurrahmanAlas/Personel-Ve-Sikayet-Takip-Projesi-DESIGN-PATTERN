@@ -1,0 +1,53 @@
+﻿@model EntityLayer.Concrete.SahaDurum
+@{
+    ViewBag.Title = "EditSaha";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<br />
+
+<h2>Şüpheli Alan Güncelleme sayfası </h2>
+
+@using (Html.BeginForm("EditSaha", "SahaDurum", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Şüpheli")
+        @Html.TextBoxFor(x => x.SahaId, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Şüpheli Alan adı")
+        @Html.TextBoxFor(x => x.SahaName, new { @class = "form-control" })
+
+        <br />
+
+
+        @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+
+
+        <br />
+        @Html.Label("   Adres /Konum")
+        @Html.TextBoxFor(x => x.SahaAdres, new { @class = "form-control" })
+
+        <br />
+        @Html.Label("Mahalle")
+        @Html.TextBoxFor(x => x.SahaAda, new { @class = "form-control" })
+
+
+        <br />  @Html.Label("Ada/ Parsel")
+        @Html.TextBoxFor(x => x.SahaParsel, new { @class = "form-control" })
+        <br />  @Html.Label("Parsel")
+        @Html.TextBoxFor(x => x.SahaDate, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" })
+        <br />
+        @Html.Label("Sonuç")
+        @Html.TextBoxFor(x => x.SahaTelefon, new { @class = "form-control" })
+
+        <br />
+
+        <button class="btn btn-info"> şüpheli Alan Güncelle</button>
+    </div>
+}
+

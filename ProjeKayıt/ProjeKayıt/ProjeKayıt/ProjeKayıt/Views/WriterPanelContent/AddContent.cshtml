@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "AddContent";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<br />
+<br />
+
+<h2 style="margin-left:250px;color:blue">Yapılan İşlem Adımı Ekleme</h2>
+<br />
+@using (Html.BeginForm("AddContent", "WriterPanelContent", FormMethod.Post))
+{
+<div class="form-group">
+
+    <input type="hidden" name="HeadingID" value="@ViewBag.d" />
+    <input type="hidden" name="HeadingName" value="@ViewBag.v" />
+
+
+
+    @Html.Label(" Firma Şikayet açıklama")
+    @Html.TextAreaFor(x => x.ContentValue, 4, 30, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ContentValue)
+    <br />
+    
+    @*@Html.Label(" Şikayet Mahalle")
+        @Html.TextBoxFor(x => x.ContentMahalle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentMahalle)
+        <br />
+        @Html.Label(" Ada ")
+        @Html.TextBoxFor(x => x.ContentAdaNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentAdaNo)
+        <br />
+        @Html.Label(" Parsel no")
+        @Html.TextBoxFor(x => x.ContentParselNo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ContentParselNo)
+        <br />*@
+
+
+
+    <button class="btn btn-info">Şikayet Ekle</button>
+</div>
+
+
+
+}

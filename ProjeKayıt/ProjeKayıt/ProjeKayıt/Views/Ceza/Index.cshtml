@@ -1,0 +1,119 @@
+﻿@using EntityLayer.Concrete
+@model List<Punishment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<br />
+<h3 style="margin-left:400px;color:black">  ARAÇLARA YAZILAN CEZA LİSTESİ </h3>
+<br />
+<div>
+    <a href="/Ceza/AddCeza" class="btn btn-info"><i class="fas glyphicon-fast-backward"></i> ✚Yeni ceza gir</a>
+
+
+    <a class="collapse-item" href="/PetrolRuhsat/Index">
+        <i class="fas fa-fw fa-info  " style="color:blue"></i><b>İş Listesi</b>
+    </a>
+
+    <a href="/Ceza/HeadingReport" class="badge badge-warning" style="width:130px;height:40px;margin-left:10px;font-size:17px;">🔰  Excel, PDF </a>
+
+</div>
+<!DOCTYPE html>
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+</head>
+
+
+<br />
+
+
+<table id="tbl1" class="table table-hover table-bordered" style="margin-top:20px">
+    <thead>
+        <tr style="background-color:#162120;color:white">
+
+            <th>Firma</th>
+            <th>Tarih</th>
+
+            <th>CezaYazanEkip</th>
+            <th>Miktar</th>
+
+            <th>Açıklama</th>
+
+
+            <th>Yapılan işlem Sonuc</th>
+
+            <th>Güncelle</th>
+
+
+        </tr>
+    </thead>
+    <tbody style="color:black">
+        @foreach (var k in Model)
+        {
+
+            <tr style="background-color:white">
+
+                <td><b>»@k.CompanyName</b></td>
+                <td style="font-size:15px;">@Convert.ToDateTime(k.CezaDate).ToString("dd/MM/yyyy")</td>
+                @*<td>@k.Carıler.CarıAd</td>*@
+                @*<td>@k.Excavator.Name@k.Excavator.Name</td>*@
+
+
+
+
+                <td>     <p style=" class="text-muted text-sm"><b style="color:black"><a href="@k.CezaTeam" style="font-size:14px" class="badge btn-primary">@k.CezaTeam</a></b> <br /> </td>
+                <td>@k.CezaAmont</td>
+                <td>@k.Description</td>
+              
+                <td>@k.CezaPhoto</td>
+
+
+
+
+
+                <td style="background-color:#f8eeae"> <a href="/Ceza/EditCeza/@k.CezaId" class="badge btn-dark"><i class="fas glyphicon-fast-backward"></i>GÜNCELLE</a></td>
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<div><a href="/Ceza/AddCeza" class="btn btn-info"><i class="fas glyphicon-fast-backward"></i> ✚Yeni işlem yap</a></div>
+
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>
+
+
+
+
+
+

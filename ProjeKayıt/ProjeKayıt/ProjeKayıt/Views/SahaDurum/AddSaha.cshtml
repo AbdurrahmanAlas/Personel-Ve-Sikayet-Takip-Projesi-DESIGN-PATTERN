@@ -1,0 +1,99 @@
+﻿@model EntityLayer.Concrete.SahaDurum
+@{
+    ViewBag.Title = "AddSaha";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<br />
+
+<h3 style="margin-left:470px;color:blue"><b>+ Yeni Şüpheli Alan Ekleme</b></h3>
+<br />
+
+<table class="table table-bordered border" style="border:double">
+
+    <thead>
+
+        <tr>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Firma Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Adres Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Yapılan işlem</th>
+
+
+
+
+        </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </thead>
+    <tbody>
+        <tr>
+            @using (Html.BeginForm("AddSaha", "SahaDurum", FormMethod.Post))
+            {
+            <div class="form-group" style="margin-left:250px;">
+
+
+                <td style="color:black">
+                    @Html.Label("Hafriyatcı Adı")
+                    @Html.TextBoxFor(x => x.SahaName, new { @class = "form-control", style = "max-width:50%" })
+                    @Html.ValidationMessageFor(x => x.SahaName)
+                    <br />
+
+                    @Html.Label("Memur Ad ")
+                    @Html.TextBoxFor(x => x.Writer.WriterName, new { @class = "form-control", style = "max-width:50%" })
+                    @Html.ValidationMessageFor(x => x.Writer.WriterName)
+                    <br />
+                    @Html.Label("Tarih")
+                    @Html.TextBoxFor(x => x.SahaDate, new { @class = "form-control", style = "max-width:50%" })
+                    @Html.ValidationMessageFor(x => x.SahaDate)
+                    <br />
+                    @Html.Label("Kategori")
+                    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:50%" })
+                    <br />
+
+                </td>     <br />
+                          <td style="color:black">
+                              @Html.Label("   Adres Konum")
+                              @Html.TextBoxFor(x => x.SahaAdres, new { @class = "form-control", style = "max-width:90%" })
+                              @Html.ValidationMessageFor(x => x.SahaAdres)
+                              <br />
+                              @Html.Label("Mahalle")
+                              @Html.TextBoxFor(x => x.SahaAda, new { @class = "form-control", style = "max-width:90%" })
+                              @Html.ValidationMessageFor(x => x.SahaAda)
+
+                              <br />  @Html.Label("Ada/Parsel")
+                              @Html.TextBoxFor(x => x.SahaParsel, new { @class = "form-control", style = "max-width:50%" })
+                              @Html.ValidationMessageFor(x => x.SahaParsel)
+                              <br />
+                          </td>
+
+                          <td style="color:black">
+                              @Html.Label("Yapılan işlem /Sonuç")
+                              @Html.TextAreaFor(x => x.SahaTelefon, new { @class = "form-control", style = "max-width:80%" })
+                              <br />
+                              <button class="btn btn-info">+ Şüpheli Döküm Alanı Ekle</button>
+                          </td>
+            
+            </div>
+
+
+
+            }
+
+
+        </tr>
+    </tbody>
+</table>

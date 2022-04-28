@@ -1,0 +1,273 @@
+﻿@using EntityLayer.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<script src="~/AdminLTE-3.0.4/build/js/category.js"></script>
+@{
+    string color = "";
+
+
+}
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h3 style="margin-left:400px; color:darkblue"><b>𒁂 SAHA DENETİM RAPORLARI  </b> </h3>
+
+                    @*@using (Html.BeginForm("GetAllContent", "Content", FormMethod.Post))
+                        {
+                            <p>
+                                Aranacak Kelime:@Html.TextBox("p");
+                                <input type="submit" value="ara" />
+
+                            </p>
+
+                        }*@
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <a href="~/Heading/HeadingReport/" class="nav-link" style="color:#ff6a00">
+                        <i class="nav-icon fas fa-download">
+
+                            Excel && Pdf indir
+                        </i>
+                    </a>
+
+                </h5>
+                <div style="margin-left:900px;">
+                    @using (Html.BeginForm())
+                    {
+                    <h7 class="fas fa-search-location ">
+                        Firma/Adres/Ada/Parsel:
+                        <br />@Html.TextBox("p")
+
+
+                        <input class="btn btn-warning " type="submit" value=" Ara" placeholder="Adres/Firma Ara" />
+                    </h7> 
+
+                    }
+                </div>
+                
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+</div>
+            <div class="card-body p-0">
+                <table class="table table-hover table-bordered " style="background-color:white">
+                    <thead>
+                        <tr style="background-color:darkslategray;color:white">
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 13%">
+                                Firma Adı
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                ❢ Sonuç/Yapılan işlem
+                            </th>
+                            <th style="width: 15%">
+                                Mahalle/Açıklama
+                            </th>
+                            <th style="width: 5%">
+                                Ada/Parsel
+                            </th>
+                            <th style="width: 10%">
+                                Telefon
+                            </th>
+
+                            @*<th style="width: 30%">
+            Durum
+        </th>*@
+                            <th style="width: 10%">
+                                İlgili Memur
+                            </th>
+
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody style="color:black">
+
+                        @foreach (var item in Model)
+                        {
+
+                                if (item.Category.CategoryName == "Kazı izni mevcut değil daireye yönlendirildi")
+                                {
+                                color = "badge badge-danger";
+
+                                }
+                                if (item.Category.CategoryName == "Firmanın kazı izni mevcut")
+                                {
+                                color = "badge badge-info";
+
+                                }
+                                if (item.Category.CategoryName == "Hafriyatcı firma")
+                                {
+                                color = "badge badge-dark";
+
+
+                                }
+                                if (item.Category.CategoryName == "Sonuçlandı/Tahakkuk oluşturuldu")
+                                {
+                                color = "badge badge-info";
+
+
+                                }
+                                if (item.Category.CategoryName == "Kaçak Döküm/Ceza Uygulandı")
+                                {
+                                color = "badge badge-danger";
+
+
+                                }
+                                if (item.Category.CategoryName == "GPS taktırmadığı için 3 günlük ihtar verildi")
+                                {
+                                color = "badge badge-secondary";
+
+
+                                }
+
+                                if (item.Category.CategoryName == "İhtar verildi")
+                                {
+                                color = "badge badge-danger";
+
+
+                                }
+                                if (item.Category.CategoryName == "Dolgu izni olmayanlar")
+                                {
+                                color = "badge badge-secondary";
+
+
+                                }
+                                if (item.Category.CategoryName == "Firmanın dolgu izni mevcut")
+                                {
+                                color = "badge badge-primary";
+
+
+                                }
+                                if (item.Category.CategoryName == " Belgeleri tamamlanınca daireye gelecek")
+                                {
+                                color = "badge badge-warning";
+
+
+                                }
+
+                                <tr>
+                                    <td>
+                                        ✦
+                                    </td>
+                                    <td style="color:black">
+                                        <a>
+                                            <b>   @item.HeadingName</b>
+                                        </a>
+                                        <br />
+                                        <small>
+                                            @(((DateTime)item.HeadingDate).ToString("dd-MMM-yyyy"))
+                                        </small>
+                                    </td>
+                                    <td class="project-state" style="font-size:19px;">
+                                        <span class="@color"> ⋇ @item.Category.CategoryName</span>
+                                    </td>
+
+                                    <td style="color:black">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                @item.HeadingAdres
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-inline" style=";font-size:15px;">
+                                            <li class="list-inline-item">
+                                                @item.HeadingAda / @item.HeadingParsel
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline" style="font-size:16px;color:darkblue">
+                                            <li class="list-inline-item">
+                                                @item.Telefon
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                    @*<td>@item.HeadingStatus</td>*@
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <b> @item.Writer.WriterName</b>
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="~/Content/ContentByHeading/@item.HeadingID">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            İşlemler
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@item.HeadingID">
+                                            <i class="fas fa-list-alt">
+                                            </i>
+                                            Düzenle
+                                        </a>
+
+                                        @*<a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+                            <i class="fas fa-trash">
+                            </i>
+                            Sil
+                        </a>*@
+                                        <a class="badge btn-dark btn-sm" style="font-size:15px;" href="/WriterPanelContent/AddContent/@item.HeadingID">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Açıklama yaz
+                                        </a>
+                                        <a class="badge btn-danger btn-sm " href="/Heading/DeleteHeading/@item.HeadingID">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Sil
+                                        </a>
+                                        @*@Html.ActionLink("✖ SİL", "sil", new { id = item.HeadingID }, new { @class = "badge badge-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })*@
+                                    </td>
+
+                                </tr>
+                                }
+                        </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <a href="/WriterPanel/NewHeading/" class="btn btn-primary" , style="max-width:20%">✚ Yeni Yapılan iş  girişi </a>
+       
+        <a href="/Heading/Index/" class="btn btn-primary " , style="max-width:20%">➔Tüm Şikayetler </a>
+    </div>
+</div>
+
+
+

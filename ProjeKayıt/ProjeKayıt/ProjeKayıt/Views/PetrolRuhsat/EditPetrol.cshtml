@@ -1,0 +1,48 @@
+﻿@model EntityLayer.Concrete.PetrolRuhsat
+@{
+    ViewBag.Title = "EditSaha";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<br />
+
+<h2 class="text-center"style="color:darkblue">Şüpheli Alan Güncelleme sayfası </h2>
+
+@using (Html.BeginForm("EditPetrol", "PetrolRuhsat", FormMethod.Post))
+{
+<div class="form-group  " style="margin-left:400px; color:blue">
+    @Html.HiddenFor(x => x.WriterID, new { @class = "form-control", style = "max-width:50%" })
+    @Html.HiddenFor(x => x.PetrolId, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+    @Html.Label("Petrol istasyonu adı")
+    @Html.TextBoxFor(x => x.PetrolName, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+
+
+ 
+    @Html.Label("   Adres /Konum")
+    @Html.TextBoxFor(x => x.PetrolAdres, new { @class = "form-control", style = "max-width:50%" })
+
+    <br />
+    @Html.Label("Mahalle")
+    @Html.TextBoxFor(x => x.PetrolAda, new { @class = "form-control", style = "max-width:50%" })
+
+
+    <br />  @Html.Label("Ada/ Parsel")
+    @Html.TextBoxFor(x => x.PetrolParsel, new { @class = "form-control", style = "max-width:50%" })
+    <br />  @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.PetrolDate, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:50%" })
+    <br />
+    @Html.Label("Sonuç")
+    @Html.TextBoxFor(x => x.PetrolTelefon, new { @class = "form-control", style = "max-width:50%" })
+
+    <br />
+
+    <button class="btn btn-primary">Güncelle</button>
+</div>
+}
+

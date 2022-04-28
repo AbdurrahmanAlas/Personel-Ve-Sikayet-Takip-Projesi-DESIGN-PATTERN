@@ -1,0 +1,87 @@
+﻿@model EntityLayer.Concrete.Punishment
+@{
+    ViewBag.Title = "AddCeza";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<h2 style="margin-left:450px;color:blue"><b>+ Yeni Ceza Kontrolü ekleme</b></h2>
+<br />
+
+<table class="table table-bordered border" style="border:double">
+
+    <thead>
+
+        <tr>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Firma Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Adres Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:steelblue;color:white">Yapılan işlem</th>
+
+
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr style="color:black">
+            @using (Html.BeginForm("AddCeza", "Ceza", FormMethod.Post))
+            {
+                <div class="form-group" style="margin-left:250px">
+
+
+                    <td>
+                        @Html.Label("Firma Adı")
+                        @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control", style = "max-width:50%" })
+
+                        <br />
+
+                        @*@Html.Label("Memur Ad ")
+                            @Html.TextBoxFor(x => x.Writer.WriterName, new { @class = "form-control", style = "max-width:50%" })
+                            @Html.ValidationMessageFor(x => x.Writer.WriterName)
+                            <br />*@
+                        @Html.Label("Tarih")
+                        @Html.TextBoxFor(x => x.CezaDate, new { @class = "form-control", style = "max-width:50%" })
+
+                        <br />
+
+
+                    </td>     <br />
+                              <td>
+                                  @Html.Label("  Adres Konum")
+                                  @Html.TextBoxFor(x => x.Description, new { @class = "form-control", style = "max-width:90%" })
+
+                                  <br />
+                                  @Html.Label("  Döküman Adı")
+                                  @Html.TextBoxFor(x => x.DocumentName, new { @class = "form-control", style = "max-width:90%" })
+
+
+                                  <br />
+                                  @Html.Label("  Ceza Miktarı")
+                                  @Html.TextBoxFor(x => x.CezaAmont, new { @class = "form-control", style = "max-width:90%" })
+
+
+                                  <br /> @Html.Label("Ceza yazan  ekip")
+                                  @Html.TextBoxFor(x => x.CezaTeam, new { @class = "form-control", style = "max-width:50%" })
+
+                                  <br />
+                              </td>
+
+                    <td>
+                        @Html.Label("Yapılan işlem /Sonuç")
+                        @Html.TextAreaFor(x => x.CezaPhoto, new { @class = "form-control", style = "max-width:80%" })
+                        <br />
+                        <button class="btn btn-info">+Yeni Ceza  Ekle</button>
+                    </td>
+
+                </div>
+
+
+
+            }
+
+
+        </tr>
+    </tbody>
+</table>
+

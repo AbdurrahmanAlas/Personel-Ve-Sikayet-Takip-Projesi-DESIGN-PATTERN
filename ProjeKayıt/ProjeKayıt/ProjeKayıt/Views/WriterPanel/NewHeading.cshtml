@@ -1,0 +1,92 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "NewHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+
+<br />
+<h2 style="margin-left:500px; color:blue">+ Yeni Şikayet Ekleme</h2>
+
+
+
+<table class="table table-striped border" style="color:black">
+
+    <thead >
+
+        <tr>
+            <th style="margin-left:300px;font-size:17px;background-color:powderblue">Firma Bilgileri</th>
+            <th style="margin-left:300px;font-size:17px;background-color:powderblue">Adres Bilgileri</th>
+           
+
+
+
+        </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </thead>
+    <tbody>
+        <tr style="color:black">
+            
+                @using (Html.BeginForm("NewHeading", "WriterPanel", FormMethod.Post))
+                {
+                    <div class="form-group">
+
+
+                        <td>
+                            @Html.Label(" Şikayet edilen firma")
+                            @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control", style = "max-width:50%" })
+                            @Html.ValidationMessageFor(x => x.HeadingName)
+                            <br />  @Html.Label(" Telefon")
+                            @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control", style = "max-width:50%" })
+
+                            <br />
+                            @Html.Label("Kategori")
+                            @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control", style = "max-width:50%" })
+                        </td>    <br />
+                     <td>
+                         @Html.Label(" Mahalle/Yapılan İşlem ")
+                         @Html.TextBoxFor(x => x.HeadingAdres, new { @class = "form-control", style = "max-width:60%" })
+                         @Html.ValidationMessageFor(x => x.HeadingAdres)
+                         <br />
+                       
+                         @Html.Label(" Ada no")
+                         @Html.TextBoxFor(x => x.HeadingAda, new { @class = "form-control", style = "max-width:60%" })
+                         @Html.ValidationMessageFor(x => x.HeadingAda)
+                         <br />  @Html.Label(" Parsel No")
+                         @Html.TextBoxFor(x => x.HeadingParsel, new { @class = "form-control", style = "max-width:60%" })
+                         @Html.ValidationMessageFor(x => x.HeadingParsel)
+                         <br />
+                         <button class="btn btn-info">+ Şikayet Ekle</button>
+                     </td>
+
+
+                <br />
+
+
+         
+                </div>
+
+
+
+            }
+
+        </tr>
+    </tbody>
+</table>
